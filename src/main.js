@@ -1,5 +1,5 @@
 // query selector variables go here 👇
-
+var Poster = require('poster.js');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -109,8 +109,10 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+// We want to use the getRandomIndex function and apply it to all of the arrays above.
 function mainPage() {
   var randomImage = images[getRandomIndex(images)];
+  console.log(randomImage);
   var mainPagePoster = new Poster(randomImage, title, quote);
   return mainPagePoster
 }
