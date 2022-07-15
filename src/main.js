@@ -76,7 +76,7 @@ var titles = [
   'wisdom'
 ];
 var quotes = [
-  'Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.',
+  'Don\’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.',
   'You are braver than you believe, stronger than you seem and smarter than you think.',
   'You are confined only by the walls you build yourself.',
   'The one who has confidence gains the confidence of others.',
@@ -128,7 +128,7 @@ showSaved.addEventListener('click', function() {
 });
 savedToMain.addEventListener('click', displaySaved);
 makePoster.addEventListener('click', displayUserPoster);
-buttonSavePoster.addEventListener('click', addPosterSaved);
+buttonSavePoster.addEventListener('click', addSavedPoster);
 savedPostersGrid.addEventListener('dblclick', deleteSavedPoster);
 
 // functions and event handlers go here 👇
@@ -163,7 +163,7 @@ function displayUserPoster() {
   mainQuote.innerText = userPoster.quote;
 }
 
-function addPosterSaved() {
+function addSavedPoster() {
   var likedPoster = new Poster(mainURL.src, mainTitle.innerText, mainQuote.innerText);
 
   for (var i = 0; i < savedPosters.length; i++) {
