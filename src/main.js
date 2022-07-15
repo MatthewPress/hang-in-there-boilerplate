@@ -151,10 +151,13 @@ function displayForm() {
 function displayUserPoster() {
   event.preventDefault();
   var userPoster = new Poster(userURL.value, userTitle.value, userQuote.value);
+
   images.push(userPoster.imageURL);
   titles.push(userPoster.title);
   quotes.push(userPoster.quote);
+
   displayForm();
+
   mainURL.src = userPoster.imageURL;
   mainTitle.innerText = userPoster.title;
   mainQuote.innerText = userPoster.quote;
@@ -162,14 +165,14 @@ function displayUserPoster() {
 
 function addPosterSaved() {
   var likedPoster = new Poster(mainURL.src, mainTitle.innerText, mainQuote.innerText);
+
   for (var i = 0; i < savedPosters.length; i++) {
     // Fix if statement conditional because right now it will not push a new poster in if any of the proteries match a savedPosters property
-    if (likedPoster.imageURL !== savedPosters[i].imageURL && likedPoster.title !== savedPosters[i].title && likedPoster.quote !== savedPosters[i].quote) {
-      continue;
-    } else {
+    if (likedPoster.imageURL === savedPosters[i].imageURL && likedPoster.title === savedPosters[i].title && likedPoster.quote === savedPosters[i].quote) {
       return;
     }
   }
+
   savedPosters.push(likedPoster);
   console.log(savedPosters);
 }
@@ -181,6 +184,7 @@ function displaySaved() {
 
 function loadSavedPosters() {
   savedPostersGrid.innerHTML = "";
+
   for (var i = 0; i < savedPosters.length; i++) {
     savedPostersGrid.innerHTML += `<figure class="mini-poster" id="${savedPosters[i].id}">
         <img class="poster-img" src="${savedPosters[i].imageURL}" alt="">
@@ -192,6 +196,7 @@ function loadSavedPosters() {
 
 function deleteSavedPoster(e) {
   var targetId = e.target.getAttribute("id");
+
   for (var i = 0; i < savedPosters.length; i++) {
     if (targetId != savedPosters[i].id) {
       continue;
@@ -199,5 +204,6 @@ function deleteSavedPoster(e) {
       savedPosters.splice(i, 1);
     }
   }
+
   loadSavedPosters();
 }
